@@ -1,29 +1,120 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
   <title>سایت علیرضا گنگستر</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #111, #333);
+      color: white;
+      font-family: sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    header {
+      background: black;
+      padding: 15px;
+      font-size: 1.5rem;
+      display: none;
+    }
+    #login, #selectMode, #chat {
+      display: none;
+      margin-top: 30px;
+    }
+    input, button, textarea {
+      font-size: 1rem;
+      padding: 10px;
+      margin: 10px;
+      border-radius: 10px;
+      border: none;
+    }
+    textarea {
+      width: 80%;
+      height: 100px;
+    }
+    #response {
+      margin-top: 20px;
+      color: lightgreen;
+      white-space: pre-wrap;
+    }
+  </style>
 </head>
 <body>
-  <header id="topHeader" style="display: none;">ساخته شده توسط علیرضا گنگستر</header>
 
-  <div id="loginScreen">
-    <h2>رمز سایت رو وارد کن:</h2>
-    <input type="password" id="passwordInput" placeholder="رمز؟">
-    <br>
-    <button onclick="checkPassword()">ورود</button>
-  </div>
+<header id="mainHeader">ساخته شده توسط علیرضا گنگستر</header>
 
-  <div id="mainScreen" style="display: none;">
-    <h2>هوش مصنوعی جمینای 🤖</h2>
-    <textarea id="promptInput" placeholder="سوالتو بنویس اینجا..."></textarea>
-    <br>
-    <button onclick="askGemini()">ارسال به جمینای</button>
-    <div id="response"></div>
-  </div>
+<div id="login">
+  <h2>ورود به سایت</h2>
+  <input type="password" id="password" placeholder="رمز رو وارد کن">
+  <br>
+  <button onclick="checkPassword()">ورود</button>
+</div>
 
-  <script src="script.js"></script>
+<div id="selectMode">
+  <h3>نسخه مورد نظر رو انتخاب کن:</h3>
+  <button onclick="showChat('موبایل')">📱 موبایل</button>
+  <button onclick="showChat('کامپیوتر')">💻 کامپیوتر</button>
+</div>
+
+<div id="chat">
+  <h2>چت با Gemini 2.0 Flash</h2>
+  <textarea id="userInput" placeholder="سوالت رو بنویس..."></textarea>
+  <br>
+  <button onclick="askGemini()">ارسال</button>
+  <div id="response"></div>
+</div>
+
+<script>
+  const apiKey = "AIzaSyABDpZjbzm3N3-pxiPl_R6RbSlEOmRgC6w";
+
+  document.getElementById("login").style.display = "block";
+
+  function checkPassword() {
+    const pass = document.getElementById("password").value;
+    if (pass === "علیرضا گنگستر") {
+      document.getElementById("login").style.display = "none";
+      document.getElementById("mainHeader").style.display = "block";
+      document.getElementById("selectMode").style.display = "block";
+    } else {
+      alert("رمز اشتباهه!");
+    }
+  }
+
+  function showChat(mode) {
+    document.getElementById("selectMode").style.display = "none";
+    document.getElementById("chat").style.display = "block";
+  }
+
+  async function askGemini() {
+    const input = document.getElementById("userInput").value;
+    const responseBox = document.getElementById("response");
+    responseBox.innerText = "در حال دریافت پاسخ...";
+
+    const res = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          contents: [
+            {
+              parts: [
+                { text: input }
+              ]
+            }
+          ]
+        })
+      }
+    );
+
+    const data = await res.json();
+    const result = data?.candidates?.[0]?.content?.parts?.[0]?.text || "پاسخی دریافت نشد!";
+    responseBox.innerText = result;
+  }
+</script>
+
 </body>
 </html>
