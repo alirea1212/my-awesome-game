@@ -1,18 +1,29 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>سفینه جهنده - ساخته شده توسط علیرضا</title>
-<link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>سایت علیرضا گنگستر</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<header><h1>ساخته شده توسط علیرضا</h1></header>
-<div class="game-container">
-  <canvas id="game"></canvas>
-  <div id="score">امتیاز: 0</div>
-  <button id="restart" style="display:none">شروع مجدد</button>
-</div>
-<script src="script.js"></script>
+  <header id="topHeader" style="display: none;">ساخته شده توسط علیرضا گنگستر</header>
+
+  <div id="loginScreen">
+    <h2>رمز سایت رو وارد کن:</h2>
+    <input type="password" id="passwordInput" placeholder="رمز؟">
+    <br>
+    <button onclick="checkPassword()">ورود</button>
+  </div>
+
+  <div id="mainScreen" style="display: none;">
+    <h2>هوش مصنوعی جمینای 🤖</h2>
+    <textarea id="promptInput" placeholder="سوالتو بنویس اینجا..."></textarea>
+    <br>
+    <button onclick="askGemini()">ارسال به جمینای</button>
+    <div id="response"></div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
