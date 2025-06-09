@@ -7,162 +7,124 @@
 body {
   margin: 0;
   font-family: 'Vazirmatn', sans-serif;
-  background: linear-gradient(135deg, #1c3f58, #4a90e2);
-  color: #f0f0f0;
-  overflow-x: hidden;
+  background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+  color: #eaeaea;
+  direction: rtl;
 }
 
 header {
-  background: #0d3b66;
-  padding: 20px;
+  background: #121212;
+  padding: 25px 0;
   text-align: center;
-  font-size: 2rem;
+  font-size: 2.6rem;
   font-weight: 900;
-  letter-spacing: 3px;
-  color: #ffd166;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.7);
+  letter-spacing: 6px;
+  color: #f1c40f;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.8);
+  user-select: none;
 }
 
 #loginScreen {
-  height: 85vh;
+  height: 80vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 #loginScreen button {
-  background: #f95738;
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 1.8rem;
+  padding: 20px 70px;
+  border-radius: 60px;
   border: none;
-  color: #fff;
-  font-size: 1.4rem;
-  padding: 18px 60px;
-  border-radius: 50px;
+  background: #f39c12;
+  color: #121212;
+  font-weight: 900;
   cursor: pointer;
-  box-shadow: 0 5px 15px rgba(249, 87, 56, 0.7);
+  box-shadow: 0 6px 20px rgba(243, 156, 18, 0.7);
   transition: 0.3s ease;
-  font-weight: 700;
 }
 
 #loginScreen button:hover {
-  background: #d94f33;
+  background: #d88e10;
 }
 
-#mainContent {
-  display: none;
-  max-width: 960px;
-  margin: 0 auto 50px;
-  padding: 0 15px;
+#deviceChoice {
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
 }
 
-section {
-  margin: 70px 0;
-  padding: 30px 35px;
-  border-radius: 18px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
-  backdrop-filter: saturate(180%) blur(15px);
+#deviceChoice h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #f1c40f;
 }
 
-#history {
-  background: linear-gradient(135deg, #073b4c, #118ab2);
-  color: #e0f7fa;
+#deviceChoice button {
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 1.4rem;
+  padding: 15px 45px;
+  border-radius: 50px;
+  border: none;
+  background: #2980b9;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(41, 128, 185, 0.7);
+  transition: 0.3s ease;
+  width: 180px;
 }
 
-#history img {
-  display: block;
-  margin: 0 auto 25px;
-  width: 120px;
-  border-radius: 14px;
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.6);
+#deviceChoice button:hover {
+  background: #1a5f85;
 }
 
-#history h2 {
-  text-align: center;
-  font-size: 2.4rem;
-  margin-bottom: 25px;
-  letter-spacing: 1.4px;
-}
-
-/* culture */
-#culture {
-  background: linear-gradient(135deg, #6a0572, #a90580);
-  color: #f9d5e5;
-}
-
-#culture img {
-  display: block;
-  margin: 0 auto 25px;
-  width: 120px;
-  border-radius: 14px;
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.6);
-}
-
-#culture h2 {
-  text-align: center;
-  font-size: 2.4rem;
-  margin-bottom: 25px;
-  letter-spacing: 1.4px;
-}
-
-/* nature */
-#nature {
-  background: linear-gradient(135deg, #2a9d8f, #264653);
-  color: #d4f4dd;
-}
-
-#nature img {
-  display: block;
-  margin: 0 auto 25px;
-  width: 120px;
-  border-radius: 14px;
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.6);
-}
-
-#nature h2 {
-  text-align: center;
-  font-size: 2.4rem;
-  margin-bottom: 25px;
-  letter-spacing: 1.4px;
-}
-
-/* food */
-#food {
-  background: linear-gradient(135deg, #f4a261, #e76f51);
-  color: #3d1a03;
-}
-
-#food img {
-  display: block;
-  margin: 0 auto 25px;
-  width: 120px;
-  border-radius: 14px;
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.6);
-}
-
-#food h2 {
-  text-align: center;
-  font-size: 2.4rem;
-  margin-bottom: 25px;
-  letter-spacing: 1.4px;
-}
-
-/* Flag image common style */
 .flag {
+  display: block;
+  margin: 30px auto 50px;
+  width: 250px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(241, 196, 15, 0.7);
   user-select: none;
 }
 
-/* Responsive */
+/* بخش های اصلی */
+.contentSection {
+  background: rgba(0,0,0,0.4);
+  margin: 25px auto;
+  max-width: 900px;
+  border-radius: 20px;
+  padding: 30px 40px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+  line-height: 1.9;
+  font-size: 1.2rem;
+  color: #f0e6c8;
+  font-weight: 500;
+  text-align: justify;
+  user-select: text;
+}
+
+.contentSection h2 {
+  color: #f1c40f;
+  font-size: 2.8rem;
+  margin-bottom: 20px;
+  text-align: center;
+  user-select: none;
+}
+
+/* نمایش برای موبایل */
 @media (max-width: 768px) {
-  section {
-    margin: 40px 15px;
-    padding: 20px 20px;
+  .contentSection {
+    padding: 25px 20px;
+    font-size: 1rem;
+    max-width: 95%;
   }
-  header {
-    font-size: 1.5rem;
-    padding: 15px;
-  }
-  #loginScreen button {
-    font-size: 1.2rem;
-    padding: 14px 40px;
+  .flag {
+    width: 180px;
+    margin-bottom: 40px;
   }
 }
