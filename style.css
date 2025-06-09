@@ -85,38 +85,36 @@ header {
 
 .flag {
   display: block;
-  margin: 30px auto 50px;
+  margin: 40px auto 50px;
   width: 250px;
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(241, 196, 15, 0.7);
   user-select: none;
 }
 
-/* بخش های اصلی */
 .contentSection {
   background: rgba(0,0,0,0.4);
-  margin: 25px auto;
+  margin: 15px auto 40px;
   max-width: 900px;
   border-radius: 20px;
-  padding: 30px 40px;
+  padding: 35px 40px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.7);
-  line-height: 1.9;
-  font-size: 1.2rem;
+  line-height: 2.2;
+  font-size: 1.25rem;
   color: #f0e6c8;
-  font-weight: 500;
+  font-weight: 600;
   text-align: justify;
   user-select: text;
 }
 
 .contentSection h2 {
   color: #f1c40f;
-  font-size: 2.8rem;
-  margin-bottom: 20px;
+  font-size: 3rem;
+  margin-bottom: 22px;
   text-align: center;
   user-select: none;
 }
 
-/* نمایش برای موبایل */
 @media (max-width: 768px) {
   .contentSection {
     padding: 25px 20px;
