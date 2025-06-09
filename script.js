@@ -1,37 +1,15 @@
-const API_KEY = "AIzaSyABDpZjbzm3N3-pxiPl_R6RbSlEOmRgC6w";
+document.addEventListener('DOMContentLoaded', () => {
+  const loginScreen = document.getElementById('loginScreen');
+  const mainContent = document.getElementById('mainContent');
+  const enterBtn = document.getElementById('enterBtn');
 
-function checkPassword() {
-  const password = document.getElementById("passwordInput").value;
-  if (password === "علیرضا گنگستر") {
-    document.getElementById("loginScreen").style.display = "none";
-    document.getElementById("mainScreen").style.display = "block";
-    document.getElementById("topHeader").style.display = "block";
-  } else {
-    alert("رمز اشتباهه داداش 😅");
-  }
-}
-
-async function askGemini() {
-  const prompt = document.getElementById("promptInput").value;
-  const responseBox = document.getElementById("response");
-  responseBox.innerText = "در حال فکر کردن... 🤔";
-
-  const res = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${API_KEY}`,
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        contents: [{ parts: [{ text: prompt }] }]
-      })
+  enterBtn.addEventListener('click', () => {
+    const password = prompt('برای ورود لطفا رمز را وارد کنید:');
+    if (password && password.trim().toLowerCase() === 'علیرضا') {
+      loginScreen.style.display = 'none';
+      mainContent.style.display = 'block';
+    } else {
+      alert('رمز اشتباه است. لطفا دوباره تلاش کنید.');
     }
-  );
-
-  const data = await res.json();
-  try {
-    const reply = data.candidates[0].content.parts[0].text;
-    responseBox.innerText = reply;
-  } catch (e) {
-    responseBox.innerText = "خطایی رخ داد یا پاسخ نیومد ❌";
-  }
-}
+  });
+});
